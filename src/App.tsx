@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import React, { useRef, useState } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import Effects from './Effects'
+import './App.css';
+import { color } from 'three/examples/jsm/nodes/shadernode/ShaderNode';
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -48,8 +50,8 @@ function Box(props) {
 
 export default function App() {
   return (
-    <div>
-      <Canvas gl={{ antialias: false }} dpr={1} style={{ width: '1280px', height: '1280px', imageRendering: 'pixelated' }}>
+    <div className='floatingBox'>
+      <Canvas gl={{ antialias: false }} dpr={1} style={{ width: '1929px', height: '1080px', imageRendering: 'pixelated', position: 'absolute', top: '0', left: '0' }}>
         {/* <Test /> */}
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
@@ -58,7 +60,10 @@ export default function App() {
         <Box position={[1.2, 0, 0]} /> */}
         <OrbitingBoxes />
         <Effects />
+        
+        {/* HTML content */}
       </Canvas>
+      <h1 style={{color:"white", zIndex:'9', position:'absolute', top:'50%', right:'50%', userSelect:'none', fontFamily:'sans-serif'}}>Hello</h1>
     </div>
   )
 }
